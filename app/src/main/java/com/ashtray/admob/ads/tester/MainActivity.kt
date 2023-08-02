@@ -10,18 +10,8 @@ import com.ashtray.admob.ads.library.customized.TemplateView
 import com.google.android.gms.ads.AdLoader
 import com.google.android.gms.ads.AdRequest
 import com.google.android.gms.ads.MobileAds
-import com.google.android.gms.ads.nativead.NativeAd
 
 class MainActivity : AppCompatActivity() {
-
-    private val nativeAdListener = NativeAd.OnNativeAdLoadedListener {
-        val background = ColorDrawable(Color.WHITE)
-        val styles = NativeTemplateStyle.Builder().withMainBackgroundColor(background).build()
-        val template = findViewById<TemplateView>(R.id.template_view)
-        template.setStyles(styles)
-        template.setNativeAd(it)
-    }
-
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -30,10 +20,36 @@ class MainActivity : AppCompatActivity() {
 
         MobileAds.initialize(this) {
             Log.d(TAG, "onCreate: mobile ads sdk initialization done")
+            loadSmallAd()
+            loadLargeAd()
         }
+    }
 
+    private fun loadSmallAd() {
         val adLoader = AdLoader.Builder(this, "ca-app-pub-3940256099942544/2247696110")
-            .forNativeAd(nativeAdListener)
+            .forNativeAd {
+                val background = ColorDrawable(Color.WHITE)
+                val styles =
+                    NativeTemplateStyle.Builder().withMainBackgroundColor(background).build()
+                val template = findViewById<TemplateView>(R.id.small_template_view)
+                template.setStyles(styles)
+                template.setNativeAd(it)
+            }
+            .build()
+
+        adLoader.loadAd(AdRequest.Builder().build());
+    }
+
+    private fun loadLargeAd() {
+        val adLoader = AdLoader.Builder(this, "ca-app-pub-3940256099942544/2247696110")
+            .forNativeAd {
+                val background = ColorDrawable(Color.WHITE)
+                val styles =
+                    NativeTemplateStyle.Builder().withMainBackgroundColor(background).build()
+                val template = findViewById<TemplateView>(R.id.large_template_view)
+                template.setStyles(styles)
+                template.setNativeAd(it)
+            }
             .build()
 
         adLoader.loadAd(AdRequest.Builder().build());
