@@ -133,7 +133,7 @@ class TemplateView(context: Context, attrs: AttributeSet?) : FrameLayout(context
         nativeAdView?.callToActionView = callToActionView
         nativeAdView?.headlineView = primaryView
         nativeAdView?.mediaView = mediaView
-        secondaryView!!.visibility = VISIBLE
+        secondaryView?.visibility = VISIBLE
         val secondaryText: String? = if (adHasOnlyStore(nativeAd)) {
             nativeAdView?.storeView = secondaryView
             store
@@ -143,28 +143,28 @@ class TemplateView(context: Context, attrs: AttributeSet?) : FrameLayout(context
         } else {
             ""
         }
-        primaryView!!.text = headline
-        callToActionView!!.text = cta
+        primaryView?.text = headline
+        callToActionView?.text = cta
 
         //  Set the secondary view to be the star rating if available.
         if (starRating != null && starRating > 0) {
-            secondaryView!!.visibility = GONE
-            ratingBar!!.visibility = VISIBLE
-            ratingBar!!.rating = starRating.toFloat()
+            secondaryView?.visibility = GONE
+            ratingBar?.visibility = VISIBLE
+            ratingBar?.rating = starRating.toFloat()
             nativeAdView?.starRatingView = ratingBar
         } else {
-            secondaryView!!.text = secondaryText
-            secondaryView!!.visibility = VISIBLE
-            ratingBar!!.visibility = GONE
+            secondaryView?.text = secondaryText
+            secondaryView?.visibility = VISIBLE
+            ratingBar?.visibility = GONE
         }
         if (icon != null) {
-            iconView!!.visibility = VISIBLE
-            iconView!!.setImageDrawable(icon.drawable)
+            iconView?.visibility = VISIBLE
+            iconView?.setImageDrawable(icon.drawable)
         } else {
-            iconView!!.visibility = GONE
+            iconView?.visibility = GONE
         }
         if (tertiaryView != null) {
-            tertiaryView!!.text = body
+            tertiaryView?.text = body
             nativeAdView?.bodyView = tertiaryView
         }
         nativeAdView?.setNativeAd(nativeAd)
