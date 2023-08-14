@@ -32,7 +32,7 @@ class MainActivity : AppCompatActivity() {
                 val styles =
                     NativeTemplateStyle.Builder().withMainBackgroundColor(background).build()
                 val template = findViewById<TemplateView>(R.id.small_template_view)
-                template.setStyles(styles)
+                template.applyStyles(styles)
                 template.setNativeAd(it)
             }
             .build()
@@ -47,7 +47,7 @@ class MainActivity : AppCompatActivity() {
                 val styles =
                     NativeTemplateStyle.Builder().withMainBackgroundColor(background).build()
                 val template = findViewById<TemplateView>(R.id.large_template_view)
-                template.setStyles(styles)
+                template.applyStyles(styles)
                 template.setNativeAd(it)
             }
             .build()
