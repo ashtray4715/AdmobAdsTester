@@ -41,7 +41,7 @@ class TemplateView(context: Context, attrs: AttributeSet?) : FrameLayout(context
 
     fun applyStyles(styles: NativeTemplateStyle) {
         styles.mainBackgroundColor?.let { mainBackground ->
-            background?.background = mainBackground
+            background?.setBackgroundColor(mainBackground.color)
             primaryView?.background = mainBackground
             secondaryView?.background = mainBackground
             tertiaryView?.background = mainBackground
