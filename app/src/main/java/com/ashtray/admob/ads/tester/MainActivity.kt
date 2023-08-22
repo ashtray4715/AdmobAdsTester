@@ -21,6 +21,7 @@ class MainActivity : AppCompatActivity() {
         MobileAds.initialize(this) {
             Log.d(TAG, "onCreate: mobile ads sdk initialization done")
             loadSmallAd()
+            loadSmallAd2()
             loadLargeAd()
         }
     }
@@ -32,6 +33,21 @@ class MainActivity : AppCompatActivity() {
                 val styles =
                     NativeTemplateStyle.Builder().withMainBackgroundColor(background).build()
                 val template = findViewById<TemplateView>(R.id.small_template_view)
+                template.applyStyles(styles)
+                template.setNativeAd(it)
+            }
+            .build()
+
+        adLoader.loadAd(AdRequest.Builder().build());
+    }
+
+    private fun loadSmallAd2() {
+        val adLoader = AdLoader.Builder(this, "ca-app-pub-3940256099942544/2247696110")
+            .forNativeAd {
+                val background = ColorDrawable(Color.WHITE)
+                val styles =
+                    NativeTemplateStyle.Builder().withMainBackgroundColor(background).build()
+                val template = findViewById<TemplateView>(R.id.small_template_view2)
                 template.applyStyles(styles)
                 template.setNativeAd(it)
             }

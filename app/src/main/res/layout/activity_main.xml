@@ -4,24 +4,41 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <com.ashtray.admob.ads.library.customized.TemplateView
-        android:id="@+id/small_template_view"
+    <ScrollView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_margin="10dp"
-        app:gnt_template_type="@layout/gnt_small_template_view"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent">
 
-    <com.ashtray.admob.ads.library.customized.TemplateView
-        android:id="@+id/large_template_view"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_margin="10dp"
-        app:gnt_template_type="@layout/gnt_medium_template_view"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/small_template_view" />
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <com.ashtray.admob.ads.library.customized.TemplateView
+                android:id="@+id/small_template_view"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="10dp"
+                app:gnt_template_type="@layout/gnt_small_template_view" />
+
+            <com.ashtray.admob.ads.library.customized.TemplateView
+                android:id="@+id/small_template_view2"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="10dp"
+                app:gnt_template_type="@layout/gnt_small_template_view2" />
+
+            <com.ashtray.admob.ads.library.customized.TemplateView
+                android:id="@+id/large_template_view"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="10dp"
+                app:gnt_template_type="@layout/gnt_medium_template_view" />
+
+        </LinearLayout>
+
+    </ScrollView>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -19,7 +19,6 @@ import com.google.android.gms.ads.nativead.NativeAdView
  * Base class for a template view. *
  */
 class TemplateView(context: Context, attrs: AttributeSet?) : FrameLayout(context, attrs) {
-    private var templateType = 0
     private var nativeAd: NativeAd? = null
     private var nativeAdView: NativeAdView? = null
     private var primaryView: TextView? = null
@@ -179,21 +178,11 @@ class TemplateView(context: Context, attrs: AttributeSet?) : FrameLayout(context
         nativeAd?.destroy()
     }
 
-    val templateTypeName: String
-        get() {
-            if (templateType == R.layout.gnt_medium_template_view) {
-                return MEDIUM_TEMPLATE
-            } else if (templateType == R.layout.gnt_small_template_view) {
-                return SMALL_TEMPLATE
-            }
-            return ""
-        }
-
     private fun initView(context: Context, attributeSet: AttributeSet?) {
         val attributes = context.theme.obtainStyledAttributes(
             attributeSet, R.styleable.TemplateView, 0, 0
         )
-        templateType = try {
+        val templateType = try {
             attributes.getResourceId(
                 R.styleable.TemplateView_gnt_template_type, R.layout.gnt_medium_template_view
             )
@@ -216,10 +205,5 @@ class TemplateView(context: Context, attrs: AttributeSet?) : FrameLayout(context
         iconView = findViewById(R.id.icon)
         mediaView = findViewById(R.id.media_view)
         background = findViewById(R.id.background)
-    }
-
-    companion object {
-        private const val MEDIUM_TEMPLATE = "medium_template"
-        private const val SMALL_TEMPLATE = "small_template"
     }
 }
